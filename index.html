@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Burguer menu with animation</title>
+	<meta name="author" content="@Fershocastro">
+	<meta name="description" content="Burguer menu with animation">
+	<meta name="keywords" content="HTML,CSS,JavaScript">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<style type="text/css">
+
+		body {
+		  background-color: #34495e;
+		  font-family: 'Roboto', sans-serif;
+		}
+
+		.menu-trigger{
+		  width: 30px;
+		  height: 18px;
+		  position: absolute;
+		  cursor: pointer;
+		  z-index: 2;
+		  left: 25px;
+		  top: 25px;
+		  transition:.5s
+		}
+
+		.menu-trigger:hover {
+		  cursor: pointer
+		}
+
+		.menu-trigger .line{
+		  width: 100%;
+		  position: absolute;
+		  top: 0;
+		  left: 0;
+		  height: 2px;
+		  background: #fff;
+		  transition:.3s
+		}
+
+		.menu-trigger .line.line-1{
+		  transition: all .3s .3s,transform .3s 0
+		}
+
+		.menu-trigger .line.line-2{
+		  top: 50%;
+		  margin-top: -1px;
+		  left: 0;
+		  transition: all .3s .3s
+		}
+
+		.menu-trigger .line.line-3{
+		  bottom: 0;
+		  top: auto;
+		  left: 0;
+		  transition: all .3s .3s,transform .3s 0
+		}
+
+		.menu-trigger.active .line-1{
+		  top: 50%;
+		  margin-top: -1px;
+		  transform: rotate(45deg);
+		  transition: all .3s,transform .3s .3s
+		}
+
+		.menu-trigger.active .line-2{
+		  opacity: 0;
+		  transition: all .3s,
+		  opacity .3s 0
+		}
+
+		.menu-trigger.active .line-3{
+		  bottom: 50%;
+		  margin-bottom: -1px;
+		  transform: rotate(-45deg);
+		  transition: all .3s,transform .3s .3s
+		}
+
+		.aside {
+			width: 250px;
+			height: 100vh;
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			left: -251px;
+			background-color: #2c3e50;
+			transition: left .2s;
+		}
+
+		.aside.active {
+			left: 0;
+			transition:left .2s;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="menu-trigger">
+	  <span class="line line-1"></span>
+	  <span class="line line-2"></span>
+	  <span class="line line-3"></span>
+	</div>
+	<div class="aside"></div>
+
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+	$(".menu-trigger").click(function () {
+	    if($(".menu-trigger").hasClass("active"))
+	    {        
+	        $(".menu-trigger").removeClass("active");
+	        $(".aside").removeClass("active");
+	    }
+	    else
+	    {
+	        $(".menu-trigger").addClass("active");
+	        $(".aside").addClass("active");
+	    }
+	});
+</script>
+</body>
+</html>
